@@ -27,6 +27,109 @@
 * **deps:** bump stream-chat from 8.14.0 to 8.14.2 ([#2179](https://github.com/GetStream/stream-chat-react/issues/2179)) ([4e6a59d](https://github.com/GetStream/stream-chat-react/commit/4e6a59dd3bcb044b091c1deb0470ba136f9155d9))
 * **deps:** bump stream-chat from 8.14.2 to 8.14.3 ([#2185](https://github.com/GetStream/stream-chat-react/issues/2185)) ([3dd8dab](https://github.com/GetStream/stream-chat-react/commit/3dd8dab51bfab8a9a6e10bb83ef3752780930899))
 
+## [11.0.0-rc.8](https://github.com/GetStream/stream-chat-react/compare/v11.0.0-rc.7...v11.0.0-rc.8) (2023-11-22)
+
+
+### Bug Fixes
+
+* calculate pagination stop from custom channel query message limit ([#2180](https://github.com/GetStream/stream-chat-react/issues/2180)) ([8374af1](https://github.com/GetStream/stream-chat-react/commit/8374af1048b81c307d0687d7730df6a96633b7e6))
+* lift notifications above modal overlay ([#2175](https://github.com/GetStream/stream-chat-react/issues/2175)) ([17d98f4](https://github.com/GetStream/stream-chat-react/commit/17d98f40eaea0a134a501deea14605b71d965871))
+
+
+### Features
+
+* allow to configure channel query options ([#2177](https://github.com/GetStream/stream-chat-react/issues/2177)) ([4f91d9a](https://github.com/GetStream/stream-chat-react/commit/4f91d9a65e752f4bcab2000f5d633b57ae4d6b0e))
+
+## [11.0.0-rc.7](https://github.com/GetStream/stream-chat-react/compare/v11.0.0-rc.6...v11.0.0-rc.7) (2023-11-15)
+
+
+### Bug Fixes
+
+* make pickerProps & popperOptions properties optional ([bce3d28](https://github.com/GetStream/stream-chat-react/commit/bce3d285caf9af4ce96916e85bef9b8173b846b4))
+
+## [11.0.0-rc.6](https://github.com/GetStream/stream-chat-react/compare/v11.0.0-rc.5...v11.0.0-rc.6) (2023-11-14)
+
+
+### Features
+
+* add pickerProps & popperOptions to EmojiPicker ([06a139a](https://github.com/GetStream/stream-chat-react/commit/06a139a60f975db51529745e16526b013e39df4a))
+* expose optional remark plugin to keep all line breaks and keep HTML in message text ([#2170](https://github.com/GetStream/stream-chat-react/issues/2170)) ([5b191c9](https://github.com/GetStream/stream-chat-react/commit/5b191c94de6ec4ff483be65b15ea00e754e0eb47))
+
+## [11.0.0-rc.5](https://github.com/GetStream/stream-chat-react/compare/v11.0.0-rc.4...v11.0.0-rc.5) (2023-11-13)
+
+
+### Bug Fixes
+
+* reduce emoji-mart peer requirements, add "typesVersions" ([6e92116](https://github.com/GetStream/stream-chat-react/commit/6e921160bf3708cb3950fa3e72acc38bc223b2ab))
+
+
+### Features
+
+* introduce MessageListContext ([#2166](https://github.com/GetStream/stream-chat-react/issues/2166)) ([8dcb1ac](https://github.com/GetStream/stream-chat-react/commit/8dcb1acd5e8e3465d6b457b07f5de2923ac2daed))
+
+## [11.0.0-rc.4](https://github.com/GetStream/stream-chat-react/compare/v11.0.0-rc.3...v11.0.0-rc.4) (2023-11-08)
+
+
+### Bug Fixes
+
+* **i18n:** add missing SDK translations ([#2157](https://github.com/GetStream/stream-chat-react/issues/2157)) ([e22a6ce](https://github.com/GetStream/stream-chat-react/commit/e22a6ceeb0116a0b8b1b963c1736c5ae7c0debcc))
+* **i18n:** do not translate command names ([#2155](https://github.com/GetStream/stream-chat-react/issues/2155)) ([b654b9a](https://github.com/GetStream/stream-chat-react/commit/b654b9a20edc2968d5c9460c3db791d05fcd8ab3))
+* **i18n:** prevent removal of dynamically generated translation keys ([#2154](https://github.com/GetStream/stream-chat-react/issues/2154)) ([ebcaa8f](https://github.com/GetStream/stream-chat-react/commit/ebcaa8f4872a94f94d0ee3841367b92ab5263959))
+* List/Item & EmojiPicker async data loading + docs update ([dedefac](https://github.com/GetStream/stream-chat-react/commit/dedeface68182cf04096ba73a7b52288d52e8bd4))
+
+
+### Features
+
+* add Channel prop doDeleteMessageRequest ([#2152](https://github.com/GetStream/stream-chat-react/issues/2152)) ([a01774a](https://github.com/GetStream/stream-chat-react/commit/a01774aa3a02b3a92a01a7c6bd5f98b49507dfbd))
+* expose channels state on chat level ([#2161](https://github.com/GetStream/stream-chat-react/issues/2161)) ([7e5543b](https://github.com/GetStream/stream-chat-react/commit/7e5543b3bf3961900c17e8a9283dfc64611f8660))
+
+## [11.0.0-rc.3](https://github.com/GetStream/stream-chat-react/compare/v11.0.0-rc.2...v11.0.0-rc.3) (2023-11-02)
+
+
+### Bug Fixes
+
+* prevent flashing EmptyStateIndicator in ChannelList before the first channels page is loaded ([#2150](https://github.com/GetStream/stream-chat-react/issues/2150)) ([a2a9645](https://github.com/GetStream/stream-chat-react/commit/a2a964513e400b62f800b118433f1d5d671b557d))
+
+
+### Features
+
+* add commands translations ([#2149](https://github.com/GetStream/stream-chat-react/issues/2149)) ([f55c86f](https://github.com/GetStream/stream-chat-react/commit/f55c86fab8dcbfd2fb3b68aaa912e31e8c5fbe67))
+
+
+### Chores
+
+* **deps:** bump @stream-io/stream-chat-css to v4-rc ([#2153](https://github.com/GetStream/stream-chat-react/issues/2153)) ([030688f](https://github.com/GetStream/stream-chat-react/commit/030688f756624a31c534c54b8941f66b3da0c9a6))
+
+# [11.0.0-rc.2](https://github.com/GetStream/stream-chat-react/compare/v11.0.0-rc.1...v11.0.0-rc.2) (2023-10-27)
+
+
+### Bug Fixes
+
+* **emoji-mart:** simplify EmojiPicker & EmojiIndex integration ([#2117](https://github.com/GetStream/stream-chat-react/issues/2117)) ([60c24b8](https://github.com/GetStream/stream-chat-react/commit/60c24b8388701ab374e750cf3404c397ba7c5888))
+
+
+### Features
+
+* **renderText:** allow custom remark and rehype plugin composition ([#2142](https://github.com/GetStream/stream-chat-react/issues/2142)) ([4a25912](https://github.com/GetStream/stream-chat-react/commit/4a259125a41d49d50473b6f0edc89a9f56d21ea6))
+* **VirtualizedMessageList:** allow to merge custom virtuoso components with the SDK defaults ([#2140](https://github.com/GetStream/stream-chat-react/issues/2140)) ([6ea9ff0](https://github.com/GetStream/stream-chat-react/commit/6ea9ff0ca01782ec1b4ceffffb74d9fa9a2fdc1c))
+
+
+### BREAKING CHANGES
+
+* **emoji-mart:** `EmojiPicker` and `EmojiIndex` have changed, see release guides in #2117 for more information
+
+# [11.0.0-rc.1](https://github.com/GetStream/stream-chat-react/compare/v10.13.1...v11.0.0-rc.1) (2023-10-12)
+
+
+### Bug Fixes
+
+* **emoji-mart:** new reactions  ([#1947](https://github.com/GetStream/stream-chat-react/issues/1947)) ([2050708](https://github.com/GetStream/stream-chat-react/commit/205070822d00b033cf5be0c2e3e6063d5cd90503))
+
+
+### BREAKING CHANGES
+
+* **emoji-mart:** `reactionOptions` signature has changed, see [release guide](https://github.com/GetStream/stream-chat-react/blob/7a19e386aa3adcc5741a7f0d92bc816a1a424094/docusaurus/docs/React/release-guides/new-reactions.mdx) for more information
+
 ## [10.20.1](https://github.com/GetStream/stream-chat-react/compare/v10.20.0...v10.20.1) (2023-11-20)
 
 
