@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Textarea from 'react-textarea-autosize';
 import getCaretCoordinates from 'textarea-caret';
 import { isValidElementType } from 'react-is';
 import clsx from 'clsx';
+import { RichTextEditor } from '@mantine/tiptap';
 
+import withMantine from './withMantine';
 import { List as DefaultSuggestionList } from './List';
 import {
   DEFAULT_CARET_POSITION,
@@ -17,7 +18,7 @@ import { CommandItem } from '../CommandItem';
 import { UserItem } from '../UserItem';
 import { isSafari } from '../../utils/browsers';
 
-export class ReactTextareaAutocomplete extends React.Component {
+class ReactTextareaAutocomplete extends React.Component {
   static defaultProps = {
     closeOnClickOutside: true,
     maxRows: 10,
@@ -724,58 +725,104 @@ export class ReactTextareaAutocomplete extends React.Component {
     // Textarea elements must be either controlled or uncontrolled
 
     return (
-      <div
-        className={clsx('rta', containerClassName, {
-          'rta--loading': dataLoading,
-        })}
-        style={containerStyle}
-      >
-        {this.renderSuggestionListContainer()}
-        <Textarea
-          data-testid='message-input'
-          {...this._cleanUpProps()}
-          className={clsx('rta__textarea', className)}
-          maxRows={maxRows}
-          onBlur={(e) => {
-            this._onClickAndBlurHandler(e);
-            onBlur?.(e);
-          }}
-          onChange={(e) => {
-            this._changeHandler(e);
-            onChange?.(e);
-          }}
-          onClick={(e) => {
-            this._onClickAndBlurHandler(e);
-            onClick?.(e);
-          }}
-          onCompositionEnd={() => this.setState((pv) => ({ ...pv, isComposing: false }))}
-          onCompositionStart={() => this.setState((pv) => ({ ...pv, isComposing: true }))}
-          onFocus={(e) => {
-            this.props.onFocus?.(e);
-            onFocus?.(e);
-          }}
-          onKeyDown={(e) => {
-            this._handleKeyDown(e);
-            onKeyDown?.(e);
-          }}
-          onScroll={(e) => {
-            this._onScrollHandler(e);
-            onScroll?.(e);
-          }}
-          onSelect={(e) => {
-            this._selectHandler(e);
-            onSelect?.(e);
-          }}
-          ref={(ref) => {
-            this.props?.innerRef(ref);
-            this.textareaRef = ref;
-          }}
-          style={style}
-          value={value}
-          {...restAdditionalTextareaProps}
-          defaultValue={undefined}
-        />
-      </div>
+      <RichTextEditor editor={this.props.editor}>
+        <RichTextEditor.Toolbar sticky stickyOffset={60}>
+          <RichTextEditor.ControlsGroup>
+            <RichTextEditor.Bold />
+            <RichTextEditor.Italic />
+            <RichTextEditor.Underline />
+            <RichTextEditor.Strikethrough />
+            <RichTextEditor.ClearFormatting />
+            <RichTextEditor.Highlight />
+            <RichTextEditor.Code />
+          </RichTextEditor.ControlsGroup>
+
+          <RichTextEditor.ControlsGroup>
+            <RichTextEditor.H1 />
+            <RichTextEditor.H2 />
+            <RichTextEditor.H3 />
+            <RichTextEditor.H4 />
+          </RichTextEditor.ControlsGroup>
+
+          <RichTextEditor.ControlsGroup>
+            <RichTextEditor.Blockquote />
+            <RichTextEditor.Hr />
+            <RichTextEditor.BulletList />
+            <RichTextEditor.OrderedList />
+            <RichTextEditor.Subscript />
+            <RichTextEditor.Superscript />
+          </RichTextEditor.ControlsGroup>
+
+          <RichTextEditor.ControlsGroup>
+            <RichTextEditor.Link />
+            <RichTextEditor.Unlink />
+          </RichTextEditor.ControlsGroup>
+
+          <RichTextEditor.ControlsGroup>
+            <RichTextEditor.AlignLeft />
+            <RichTextEditor.AlignCenter />
+            <RichTextEditor.AlignJustify />
+            <RichTextEditor.AlignRight />
+          </RichTextEditor.ControlsGroup>
+
+          <RichTextEditor.ControlsGroup>
+            <RichTextEditor.Undo />
+            <RichTextEditor.Redo />
+          </RichTextEditor.ControlsGroup>
+        </RichTextEditor.Toolbar>
+        <div
+          className={clsx('rta', containerClassName, {
+            'rta--loading': dataLoading,
+          })}
+          style={containerStyle}
+        >
+          {this.renderSuggestionListContainer()}
+          <RichTextEditor.Content
+            data-testid='message-input'
+            {...this._cleanUpProps()}
+            className={clsx('rta__textarea', className)}
+            maxRows={maxRows}
+            onBlur={(e) => {
+              this._onClickAndBlurHandler(e);
+              onBlur?.(e);
+            }}
+            onChange={(e) => {
+              this._changeHandler(e);
+              onChange?.(e);
+            }}
+            onClick={(e) => {
+              this._onClickAndBlurHandler(e);
+              onClick?.(e);
+            }}
+            onCompositionEnd={() => this.setState((pv) => ({ ...pv, isComposing: false }))}
+            onCompositionStart={() => this.setState((pv) => ({ ...pv, isComposing: true }))}
+            onFocus={(e) => {
+              this.props.onFocus?.(e);
+              onFocus?.(e);
+            }}
+            onKeyDown={(e) => {
+              this._handleKeyDown(e);
+              onKeyDown?.(e);
+            }}
+            onScroll={(e) => {
+              this._onScrollHandler(e);
+              onScroll?.(e);
+            }}
+            onSelect={(e) => {
+              this._selectHandler(e);
+              onSelect?.(e);
+            }}
+            ref={(ref) => {
+              this.props?.innerRef(ref);
+              this.textareaRef = ref;
+            }}
+            style={style}
+            value={value}
+            {...restAdditionalTextareaProps}
+            defaultValue={undefined}
+          />
+        </div>
+      </RichTextEditor>
     );
   }
 }
@@ -806,3 +853,6 @@ ReactTextareaAutocomplete.propTypes = {
   trigger: triggerPropsCheck,
   value: PropTypes.string,
 };
+
+const ReactTextareaAutoCompleteWithMantine = withMantine(ReactTextareaAutocomplete);
+export { ReactTextareaAutoCompleteWithMantine as ReactTextareaAutocomplete };
