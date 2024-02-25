@@ -1,6 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Textarea from 'react-textarea-autosize';
+import {
+  BoldItalicUnderlineToggles,
+  headingsPlugin,
+  linkPlugin,
+  listsPlugin,
+  markdownShortcutPlugin,
+  MDXEditor,
+  quotePlugin,
+  thematicBreakPlugin,
+  toolbarPlugin,
+  UndoRedo,
+} from '@mdxeditor/editor';
+import '@mdxeditor/editor/style.css';
+
 import getCaretCoordinates from 'textarea-caret';
 import { isValidElementType } from 'react-is';
 import clsx from 'clsx';
@@ -731,8 +744,25 @@ export class ReactTextareaAutocomplete extends React.Component {
         style={containerStyle}
       >
         {this.renderSuggestionListContainer()}
-        <Textarea
+        <MDXEditor
           data-testid='message-input'
+          plugins={[
+            headingsPlugin(),
+            listsPlugin(),
+            linkPlugin(),
+            quotePlugin(),
+            thematicBreakPlugin(),
+            markdownShortcutPlugin(),
+            toolbarPlugin({
+              toolbarContents: () => (
+                <>
+                  {' '}
+                  <UndoRedo />
+                  <BoldItalicUnderlineToggles />
+                </>
+              ),
+            }),
+          ]}
           {...this._cleanUpProps()}
           className={clsx('rta__textarea', className)}
           maxRows={maxRows}
@@ -741,7 +771,7 @@ export class ReactTextareaAutocomplete extends React.Component {
             onBlur?.(e);
           }}
           onChange={(e) => {
-            this._changeHandler(e);
+            // this._changeHandler(e);
             onChange?.(e);
           }}
           onClick={(e) => {
@@ -774,6 +804,7 @@ export class ReactTextareaAutocomplete extends React.Component {
           value={value}
           {...restAdditionalTextareaProps}
           defaultValue={undefined}
+          markdown=''
         />
       </div>
     );
