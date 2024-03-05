@@ -5,7 +5,6 @@ import { isValidElementType } from 'react-is';
 import clsx from 'clsx';
 import { RichTextEditor } from '@mantine/tiptap';
 
-import withMantine from './withMantine';
 import { List as DefaultSuggestionList } from './List';
 import {
   DEFAULT_CARET_POSITION,
@@ -729,12 +728,14 @@ class ReactTextareaAutocomplete extends React.Component {
         <RichTextEditor.Toolbar sticky stickyOffset={60}>
           <RichTextEditor.ControlsGroup>
             <RichTextEditor.Bold />
+            <RichTextEditor.Italic />
             <RichTextEditor.Strikethrough />
-            <RichTextEditor.Underline />
-            <RichTextEditor.Code />
             <RichTextEditor.Link />
-            <RichTextEditor.BulletList />
             <RichTextEditor.OrderedList />
+            <RichTextEditor.BulletList />
+            <RichTextEditor.Blockquote />
+            <RichTextEditor.Code />
+            <RichTextEditor.CodeBlock />
           </RichTextEditor.ControlsGroup>
         </RichTextEditor.Toolbar>
         <div
@@ -821,5 +822,4 @@ ReactTextareaAutocomplete.propTypes = {
   value: PropTypes.string,
 };
 
-const ReactTextareaAutoCompleteWithMantine = withMantine(ReactTextareaAutocomplete);
-export { ReactTextareaAutoCompleteWithMantine as ReactTextareaAutocomplete };
+export { ReactTextareaAutocomplete };

@@ -13,6 +13,7 @@ import type { TriggerSettings } from '../MessageInput/DefaultTriggerProvider';
 
 import type { CustomTrigger, DefaultStreamChatGenerics, UnknownType } from '../../types/types';
 import { EmojiSearchIndex } from 'components/MessageInput';
+import type { Editor } from '@tiptap/react';
 
 type ObjectUnion<T> = T[keyof T];
 
@@ -98,6 +99,7 @@ export type SuggestionListProps<
 >;
 
 export type ChatAutoCompleteProps<T extends UnknownType = UnknownType> = {
+  editor?: Editor;
   /** Function to override the default submit handler on the underlying `textarea` component */
   handleSubmit?: (event: React.BaseSyntheticEvent) => void;
   /** Function to run on blur of the underlying `textarea` component */
@@ -172,6 +174,7 @@ const UnMemoizedChatAutoComplete = <
       disabled={disabled || !!cooldownRemaining}
       disableMentions={messageInput.disableMentions}
       dropdownClassName='str-chat__emojisearch'
+      editor={props.editor}
       grow={messageInput.grow}
       handleSubmit={props.handleSubmit || messageInput.handleSubmit}
       innerRef={updateInnerRef}
