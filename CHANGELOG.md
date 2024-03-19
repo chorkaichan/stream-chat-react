@@ -1,3 +1,23 @@
+## [11.12.0](https://github.com/GetStream/stream-chat-react/compare/v11.11.0...v11.12.0) (2024-03-07)
+
+
+### Features
+
+* add message edited timestamp ([#2304](https://github.com/GetStream/stream-chat-react/issues/2304)) ([5633614](https://github.com/GetStream/stream-chat-react/commit/56336142618564152ee7047df5ba00749c93507a))
+* voice recording message attachment ([#2311](https://github.com/GetStream/stream-chat-react/issues/2311)) ([024ba6c](https://github.com/GetStream/stream-chat-react/commit/024ba6c1df39d6e57bfac1a6692fbf1306fdf173))
+
+## [11.11.0](https://github.com/GetStream/stream-chat-react/compare/v11.10.0...v11.11.0) (2024-03-01)
+
+
+### Bug Fixes
+
+* cleanup ML types and defaults ([#2305](https://github.com/GetStream/stream-chat-react/issues/2305)) ([b3ed81d](https://github.com/GetStream/stream-chat-react/commit/b3ed81dd7a99ed32fb47c81a7b4e0b8e41f6d823))
+
+
+### Features
+
+* introduce useCreateChatClient hook ([#1916](https://github.com/GetStream/stream-chat-react/issues/1916)) ([e086565](https://github.com/GetStream/stream-chat-react/commit/e08656592f635f25dc7f94bd1e6ec02c6d4c31d2)), closes [GetStream/stream-chat-react-issues#19](https://github.com/GetStream/stream-chat-react-issues/issues/19)
+
 ## [11.10.0](https://github.com/GetStream/stream-chat-react/compare/v11.9.0...v11.10.0) (2024-02-23)
 
 

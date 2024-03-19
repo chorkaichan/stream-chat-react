@@ -1,6 +1,5 @@
 ---
 id: channel
-sidebar_position: 4
 title: Channel
 ---
 
@@ -12,7 +11,6 @@ It provides five separate contexts to its children:
 - [`ChannelStateContext`](../contexts/channel-state-context.mdx) - stateful data (ex: `messages` or `members`)
 - [`ChannelActionContext`](../contexts/channel-action-context.mdx) - action handlers (ex: `sendMessage` or `openThread`)
 - [`ComponentContext`](../contexts/component-context.mdx) - custom component UI overrides (ex: `Avatar` or `Message`)
-- [`EmojiContext`](../contexts/emoji-context.mdx) - emoji UI components and data (ex: `EmojiPicker` or `emojiConfig`)
 - [`TypingContext`](../contexts/typing-context.mdx) - object of currently typing users (i.e., `typing`)
 
 :::note
@@ -140,8 +138,8 @@ Custom UI component to display a message attachment.
 
 Custom UI component to display an attachment previews in `MessageInput`.
 
-| Type      | Default                                                                             |
-| --------- | ----------------------------------------------------------------------------------- |
+| Type      | Default                                                                                        |
+| --------- | ---------------------------------------------------------------------------------------------- |
 | component | <GHComponentLink text='AttachmentPreviewList' path='/MessageInput/AttachmentPreviewList.tsx'/> |
 
 ### AutocompleteSuggestionHeader
@@ -260,9 +258,8 @@ const App = () => (
 
 Custom action handler to override the default `channel.markRead` request function (advanced usage only). The function takes two arguments:
 
-
 | Argument                  | Type                                    | Description                                                                                             |
-|---------------------------|-----------------------------------------|---------------------------------------------------------------------------------------------------------|
+| ------------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | `channel`                 | `Channel`                               | The current channel object instance                                                                     |
 | `setChannelUnreadUiState` | `(state: ChannelUnreadUiState) => void` | Function that allows us to set the unread state for the components reflecting the unread message state. |
 
@@ -302,54 +299,21 @@ Custom UI component to override default edit message input.
 | --------- | ---------------------------------------------------------------------------------- |
 | component | <GHComponentLink text='EditMessageForm' path='/MessageInput/EditMessageForm.tsx'/> |
 
-### Emoji (removed in `11.0.0`)
+### emojiSearchIndex
 
-Custom UI component to override default `NimbleEmoji` from `emoji-mart`.
-
-| Type      |
-| --------- |
-| component |
-
-### emojiData (removed in `11.0.0`)
-
-Custom prop to override default `facebook.json` emoji data set from `emoji-mart`.
-
-| Type   |
-| ------ |
-| object |
-
-### EmojiIcon (removed in `11.0.0`)
-
-Custom UI component for emoji button in input.
-
-| Type      | Default                                                                 |
-| --------- | ----------------------------------------------------------------------- |
-| component | <GHComponentLink text='EmojiIconSmall' path='/MessageInput/icons.tsx'/> |
-
-### EmojiIndex (removed in `11.0.0`)
-
-Custom search mechanism class to override default `NimbleEmojiIndex` class from `emoji-mart`.
-
-| Type  | Default                                                                                                           |
-| ----- | ----------------------------------------------------------------------------------------------------------------- |
-| class | [NimbleEmojiIndex](https://github.com/missive/emoji-mart/blob/v3.0.1/src/utils/emoji-index/nimble-emoji-index.js) |
-
-### emojiSearchIndex (available since `11.0.0`)
-
-Custom search mechanism instance or object to enable emoji autocomplete. See ["Dropping support for built-in `EmojiIndex`"](../../release-guides/upgrade-to-v11.mdx#dropping-support-for-built-in-emojiindex) release guide for more information.
+Custom search mechanism instance or object to enable emoji autocomplete.
 
 | Type   | Default   |
 | ------ | --------- |
 | object | undefined |
 
-### EmojiPicker (changed in `11.0.0`)
+### EmojiPicker
 
-Custom UI component to override default `NimblePicker` from `emoji-mart`. Markup structure changed in `11.0.0`, see ["Dropping support for built-in `EmojiPicker`"](../../release-guides/upgrade-to-v11.mdx#dropping-support-for-built-in-emojipicker) release guide for more information.
+Custom UI component to be rendered in the `MessageInput` component, see [Emoji Picker guide](../../guides/customization/emoji-picker.mdx) for more information.
 
-| Version | Type      | Default                                                                                                  |
-| ------- | --------- | -------------------------------------------------------------------------------------------------------- |
-| >=4.0.0 | component | [NimblePicker](https://github.com/missive/emoji-mart/blob/v3.0.1/src/components/picker/nimble-picker.js) |
-| ^11.0.0 | component | undefined                                                                                                |
+| Type      | Default   |
+| --------- | --------- |
+| component | undefined |
 
 ### EmptyPlaceholder
 
@@ -376,7 +340,7 @@ or directly on `MessageInput` level through `urlEnrichmentConfig` prop. See the 
 | ------- | ------- |
 | boolean | false   |
 
-### enrichURLForPreviewConfig:
+### enrichURLForPreviewConfig
 
 Global configuration for link preview generation in all the MessageInput components. See the guide [Link Previews in Message Input](../../../guides/customization/link-previews) for more.
 
@@ -420,8 +384,8 @@ Custom UI component to render at the top of the `MessageList`.
 
 A custom function to provide size configuration for image attachments
 
-| Type                                                             |
-| ---------------------------------------------------------------- |
+| Type                                                              |
+| ----------------------------------------------------------------- |
 | `(a: Attachment, e: HTMLElement) => ImageAttachmentConfiguration` |
 
 ### initializeOnMount
@@ -481,7 +445,7 @@ Configuration parameter to mark the active channel as read when mounted (opened)
 
 | Type    | Default |
 | ------- | ------- |
-| boolean | true   |
+| boolean | true    |
 
 ### Input
 
@@ -495,8 +459,8 @@ Custom UI component handling how the message input is rendered.
 
 Custom component to render link previews in `MessageInput`.
 
-| Type      | Default                                                                             |
-| --------- | ----------------------------------------------------------------------------------- |
+| Type      | Default                                                                            |
+| --------- | ---------------------------------------------------------------------------------- |
 | component | <GHComponentLink text='LinkPreviewList' path='/MessageInput/LinkPreviewList.tsx'/> |
 
 ### LoadingErrorIndicator
@@ -589,11 +553,13 @@ Custom UI component to display system messages.
 
 ### MessageTimestamp
 
-Custom UI component to display a timestamp on a message.
+Custom UI component to display a timestamp on a message. This does not include a timestamp for edited messages.
 
 | Type      | Default                                                                         |
 | --------- | ------------------------------------------------------------------------------- |
 | component | <GHComponentLink text='MessageTimestamp' path='/Message/MessageTimestamp.tsx'/> |
+
+See also [`Timestamp`](#timestamp).
 
 ### MessageBouncePrompt
 
@@ -738,6 +704,14 @@ Custom UI component to display the start of a threaded `MessageList`.
 | Type      | Default                                                                |
 | --------- | ---------------------------------------------------------------------- |
 | component | <GHComponentLink text='DefaultThreadStart' path='/Thread/Thread.tsx'/> |
+
+### Timestamp
+
+Custom UI component to display a date used in timestamps. It's used internally by the default `MessageTimestamp`, and to display a timestamp for edited messages.
+
+| Type      | Default                                                           |
+| --------- | ----------------------------------------------------------------- |
+| component | <GHComponentLink text='Timestamp' path='/Message/Timestamp.tsx'/> |
 
 ### TriggerProvider
 
