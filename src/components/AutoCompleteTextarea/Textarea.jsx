@@ -102,13 +102,10 @@ class ReactTextareaAutocomplete extends React.Component {
     event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing;
 
   _handleKeyDown = (event) => {
-    const { shouldSubmit = this._defaultShouldSubmit } = this.props;
-
     // prevent default behaviour when the selection list is rendered
     if ((event.key === 'ArrowUp' || event.key === 'ArrowDown') && this.dropdownRef)
       event.preventDefault();
 
-    if (shouldSubmit?.(event)) return this._onEnter(event);
     if (event.key === ' ') return this._onSpace(event);
     if (event.key === 'Escape') return this._closeAutocomplete();
   };
