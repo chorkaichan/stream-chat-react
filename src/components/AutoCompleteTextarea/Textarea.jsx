@@ -110,14 +110,14 @@ class ReactTextareaAutocomplete extends React.Component {
     if (event.key === 'Escape') return this._closeAutocomplete();
   };
 
-  _onEnter = (event) => {
+  _onEnter = async (event) => {
     if (!this.textareaRef) return;
 
     const trigger = this.state.currentTrigger;
 
     if (!trigger || !this.state.data) {
       // trigger a submit
-      this._replaceWord();
+      await this._replaceWord();
       if (this.textareaRef) {
         this.textareaRef.selectionEnd = 0;
       }
