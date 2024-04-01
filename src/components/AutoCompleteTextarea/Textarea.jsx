@@ -731,7 +731,6 @@ class ReactTextareaAutocomplete extends React.Component {
             <RichTextEditor.OrderedList />
             <RichTextEditor.BulletList />
             <RichTextEditor.Blockquote />
-            <RichTextEditor.Code />
             <RichTextEditor.CodeBlock />
           </RichTextEditor.ControlsGroup>
         </RichTextEditor.Toolbar>
