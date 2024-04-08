@@ -20,7 +20,6 @@ import { isSafari } from '../../utils/browsers';
 class ReactTextareaAutocomplete extends React.Component {
   static defaultProps = {
     closeOnClickOutside: true,
-    maxRows: 10,
     minChar: 1,
     movePopupAsYouType: false,
     scrollToItem: true,
@@ -710,11 +709,7 @@ class ReactTextareaAutocomplete extends React.Component {
       ...restAdditionalTextareaProps
     } = this.props.additionalTextareaProps || {};
 
-    let { maxRows } = this.props;
-
     const { dataLoading, value } = this.state;
-
-    if (!this.props.grow) maxRows = 1;
 
     // By setting defaultValue to undefined, avoid error:
     // ForwardRef(TextareaAutosize) contains a textarea with both value and defaultValue props.
@@ -745,7 +740,6 @@ class ReactTextareaAutocomplete extends React.Component {
             data-testid='message-input'
             {...this._cleanUpProps()}
             className={clsx('rta__textarea', className)}
-            maxRows={maxRows}
             onBlur={(e) => {
               this._onClickAndBlurHandler(e);
               onBlur?.(e);
